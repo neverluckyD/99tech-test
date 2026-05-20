@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  // Pooler URL (port 6543) — used by the app at runtime via PgBouncer
+  url       = env("DATABASE_URL")
+  // Direct URL (port 5432) — used by Prisma CLI for migrations
+  directUrl = env("DIRECT_URL")
+}
+
+// ─── Enums ────────────────────────────────────────────────────────────────────
+enum ResourceStatus {
+  ACTIVE
+  INACTIVE
+}
+
+// ─── Models ───────────────────────────────────────────────────────────────────
+model Resource {
+  id          String         @id @default(uuid())
+  name        String
+  description String?
+  status      ResourceStatus @default(ACTIVE)
+  createdAt   DateTime       @default(now()) @map("created_at")
+  updatedAt   DateTime       @updatedAt @map("updated_at")
+
+  @@map("resources")
+}

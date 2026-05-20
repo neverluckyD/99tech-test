@@ -1,0 +1,2 @@
+# Unit tests live here.
+# Run: npm test -- --testPathPattern=tests/unit

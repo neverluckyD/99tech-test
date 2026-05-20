@@ -1,0 +1,2 @@
+# Integration tests live here.
+# Run: npm test -- --testPathPattern=tests/integration
