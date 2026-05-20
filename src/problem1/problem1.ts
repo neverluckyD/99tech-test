@@ -17,7 +17,7 @@ var sum_to_n_b = function (n: number): number {
 // Time complexity: O(n)
 // Space complexity: O(n)
 var sum_to_n_c = function (n: number): number {
-    if (n === 1) return 1;
+    if (n <= 1) return 1;
 
     return n + sum_to_n_c(n - 1);
 };
